@@ -28,7 +28,9 @@ export default function Project() {
     useEffect(() => {
         getProject(id)
 
-        const newSocket = io(import.meta.env.VITE_BACKEND_URL)
+        const newSocket = io(import.meta.env.VITE_BACKEND_URL, {
+            transports: ['websocket'],
+        })
         newSocket.emit('join', id)
         setSocket(newSocket)
         return () => {

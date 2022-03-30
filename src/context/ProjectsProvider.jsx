@@ -52,7 +52,9 @@ const ProjectsProvider = ({ children }) => {
     }, [auth])
 
     useEffect(() => {
-        socket = io(import.meta.env.VITE_BACKEND_URL)
+        socket = io(import.meta.env.VITE_BACKEND_URL, {
+            transports: ['websocket'],
+        })
     }, [])
 
     const showAlert = alert => {
