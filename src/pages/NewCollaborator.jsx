@@ -36,7 +36,7 @@ export default function NewCollaborator() {
                 <CollaboratorForm />
             </div>
 
-            {loading ? (
+            {!project && loading ? (
                 <Spinner />
             ) : (
                 collaborator?._id && (
