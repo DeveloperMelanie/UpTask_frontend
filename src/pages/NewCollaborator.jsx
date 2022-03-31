@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom'
 import useProjects from '../hooks/useProjects'
 
 import CollaboratorForm from '../components/CollaboratorForm'
-import Spinner from '../components/Spinner'
 import Alert from '../components/Alert'
 
 export default function NewCollaborator() {
@@ -36,30 +35,26 @@ export default function NewCollaborator() {
                 <CollaboratorForm />
             </div>
 
-            {!project && loading ? (
-                <Spinner />
-            ) : (
-                collaborator?._id && (
-                    <div className='flex justify-center mt-10'>
-                        <div className='bg-white py-10 px-5 w-full lg:w-1/2 rounded-lg shadow'>
-                            <h2 className='text-center mb-10 text-2xl font-bold'>
-                                Resultado:
-                            </h2>
-                            <div className='flex justify-between items-center'>
-                                <p>{collaborator.name}</p>
-                                <button
-                                    type='button'
-                                    className='bg-slate-500 px-5 py-2 rounded-lg uppercase text-white font-bold text-sm'
-                                    onClick={() =>
-                                        addCollaborator(collaborator.email)
-                                    }
-                                >
-                                    Agregar al Proyecto
-                                </button>
-                            </div>
+            {collaborator?._id && (
+                <div className='flex justify-center mt-10'>
+                    <div className='bg-white py-10 px-5 w-full lg:w-1/2 rounded-lg shadow'>
+                        <h2 className='text-center mb-10 text-2xl font-bold'>
+                            Resultado:
+                        </h2>
+                        <div className='flex justify-between items-center'>
+                            <p>{collaborator.name}</p>
+                            <button
+                                type='button'
+                                className='bg-slate-500 px-5 py-2 rounded-lg uppercase text-white font-bold text-sm'
+                                onClick={() =>
+                                    addCollaborator(collaborator.email)
+                                }
+                            >
+                                Agregar al Proyecto
+                            </button>
                         </div>
                     </div>
-                )
+                </div>
             )}
         </>
     )
